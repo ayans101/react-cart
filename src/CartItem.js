@@ -18,7 +18,19 @@ class CartItem extends React.Component {
     // }
 
     increaseQuantity = () => {
-        console.log(this);
+        //  setState() enqueues changes to the component state (shallow merging) and tells React that this component and its children need to be re-rendered with the updated state.
+
+        //  setState form 1
+        // this.setState({
+        //     qty: this.state.qty + 1
+        // });
+
+        //  setState form 2
+        this.setState((prevState) => {
+            return {
+                qty: prevState.qty + 1
+            }
+        });
     }
 
     render() {
