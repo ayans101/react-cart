@@ -11,21 +11,21 @@ class App extends React.Component {
           title: "Watch",
           price: 899,
           qty: 2,
-          img: "",
+          img: "https://images-na.ssl-images-amazon.com/images/I/61wNVAsmJnL._UL1100_.jpg",
           id: 1,
         },
         {
           title: "Book",
           price: 999,
           qty: 4,
-          img: "",
+          img: "https://images.springer.com/sgw/books/medium/9781484239872.jpg",
           id: 2,
         },
         {
           title: "Laptop",
           price: 154999,
           qty: 1,
-          img: "",
+          img: "https://images-na.ssl-images-amazon.com/images/I/71an9eiBxpL._SL1500_.jpg",
           id: 3,
         },
       ],
@@ -80,6 +80,18 @@ class App extends React.Component {
     return count;
   }
 
+  getCartTotal = () => {
+    const { products } = this.state;
+
+    let cartTotal = 0;
+
+    products.map((product) => {
+      cartTotal += product.qty * product.price;
+    })
+
+    return cartTotal;
+  }
+
   render() {
     const { products } = this.state;
     return (
@@ -91,6 +103,7 @@ class App extends React.Component {
           onDecreaseQuantity={this.handleDecreaseQuantity}
           onDeleteProduct={this.handleDeleteProduct}
         />
+        <div style={ {padding: 10, fontSize: 20} }>TOTAL: {this.getCartTotal()}</div>
       </div>
     );
   }
