@@ -30,7 +30,25 @@ class App extends React.Component {
       //     img: "https://images-na.ssl-images-amazon.com/images/I/71an9eiBxpL._SL1500_.jpg",
       //     id: 3,
       //   },
-      // ]
+      //   {
+      //     img: "https://images-eu.ssl-images-amazon.com/images/I/41kBnxZ7z0L._SY300_SX300_QL70_FMwebp_.jpg",
+      //     price: 100,
+      //     qty: 2,
+      //     title: "Pen"
+      //   },
+      //   {
+      //     img: "https://images-na.ssl-images-amazon.com/images/I/91pln4jN4GL._SL1500_.jpg",
+      //     price: 899,
+      //     qty: 2,
+      //     title: "Bag"
+      //   },
+      //   {
+      //     img: "https://images-na.ssl-images-amazon.com/images/I/61QEtif9zRL._SL1500_.jpg",
+      //     price: 2499,
+      //     qty: 1,
+      //     title: "Air Buds"
+      //   }
+      // ],
       products: [],
       loading: true
     };
@@ -64,6 +82,9 @@ class App extends React.Component {
   componentDidMount() {
     this.db
       .collection('products')
+      .where('price', '>', 899)
+      // .where('title', '==', 'Air Buds')
+      // .orderBy('price', 'desc')
       .onSnapshot((snapshot) => {
         console.log(snapshot.docs);
         snapshot.docs.forEach((doc) => {
