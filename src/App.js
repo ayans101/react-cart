@@ -85,7 +85,7 @@ class App extends React.Component {
 
     let cartTotal = 0;
 
-    products.map((product) => {
+    products.forEach((product) => {
       cartTotal += product.qty * product.price;
     })
 
